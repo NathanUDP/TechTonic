@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NSO Group: Pegasus</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <img src="https://i.postimg.cc/W3RDFYLz/Tech-Toniclogo.png" alt="techtoniclogo">
+    <nav>
+        <ul>
+            <div class="navlist">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="articles.html">Articles</a></li>
+            <li><a href="aboutme.html">About Me</a></li>
+            <li><a href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile">Linkedin</a></li>
+            <li><a href="contact_me.html">Contact Me</a></li>
+            </div>
+        </ul>
+    </nav>
+    <header>
+        <h1 class="nsheader">NSO Group: Pegasus</h1>
+    </header>
+    <main class="nsmain">
+        <img id="ns" src="NSO photo.webp" alt="NSOlogo" width:"845px" height="563px">
+        <p>
+            State-sponsored spyware is far from a new concept. Many governments provide financial backing to organizations developing such software, seeking advantages in espionage and warfare. The market for these services is extensive.
+            However, the landscape has evolved. The dominance of desktop devices for accessing internet services like banking, social connections, and entertainment has waned in favor of mobile devices such as smartphones and tablets. These devices, with their operating systems, pose new challenges for malware developers. For instance, iOS, being a more closed system, presents a lower likelihood of successful infection, as side-loading from unauthorized sources is restricted unless the device is jailbroken.  
+        </p>
+        <p>
+            Yet, no solution is foolproof. A successful infection can be more devastating than those caused by earlier computer viruses, rootkits, and trojans. An infected mobile device can track location, spread to other nearby devices via WiFi and Bluetooth, and extract even more sensitive data than before.  
+        </p>
+        <p>
+            One prominent player in this arena is the NSO Group, which specializes in creating spyware. Its software, notably Pegasus, is utilized by numerous government organizations targeting mobile devices, particularly iOS and Android. Despite its notoriety, NSO doesn't conceal its operations like one might expect. Their website, featuring intricate JavaScript and CSS animations, describes the group as providing "best-in-class technology to help government agencies detect and prevent terrorism and crime." While Pegasus is their flagship product, NSO also offers solutions aimed at combating terrorism, human/drug trafficking, and search and rescue missions. However, criticism mainly arises from the potential and documented misuse of their software. 
+        </p>
+        <p>
+            Once NSO's software is sold to a third party, the group appears to distance itself from the actual usage. They claim not to operate any of their software personally and lack visibility into its usage or the individuals targeted. NSO states that they have an extensive vetting process, conducted by undisclosed board members, to determine eligibility for acquiring their products. The main advantage of Pegasus for government agencies is its ability to bypass encryption measures commonly found in modern software, rendering HTTPS, VPNs, and FDE useless if the software sits directly on information presented in the clear.
+        </p>
+        <p>
+            NSO's main adversary, as seen on their website, is Forbidden Stories, a non-profit organization that continues and publishes the work of journalists facing threats, prison, or murder. Forbidden Stories has extensively reported on the usage of Pegasus against journalists, sparking a campaign against the software.
+        </p>
+        <p>
+            One of the main claims by Forbidden Stories is that more than 50,000 phone numbers have been selected for surveillance using Pegasus, across more than 50 countries. This leak was directly tied to NSO servers, contradicting NSO’s claims of not having information on potential victims. NSO disputes these claims, stating that the “list” is not related to their group and is not a list of targets or potential targets of Pegasus. 
+        </p>
+        <p>
+            The list of phone numbers is linked to the Home Location Register (HLR), a database crucial for subscriber identification within cellular networks. NSO claims that this database is accessible to the public, implying that the list could be easily fabricated. However, this claim is disputed by Infobip, stating that HLR entries can only be accessed by law enforcement agencies with approved court requests. The HLR is crucial for the successful implementation of Pegasus in mobile devices and is key in determining characteristics including the country of origin. 
+        </p>
+        <p>
+            NSO adamantly states that their software cannot be implemented in any devices operating with US phone numbers. Still, in 2020, the US Federal Bureau of Investigation (FBI) was approached with a version of Pegasus called “Phantom” that could. The FBI tested the NSO tool and was impressed with its potential implementation into US and foreign investigations but declined purchase due to cost and concerns of recent reports of misuse. 
+        </p>
+        <p>
+            The largest claims against NSO and Pegasus are reports of misuse among clients. One such case is the death of Alla Al-Siddiq, a human rights advocate within the UAE. Three months after her death, evidence was released about abundant surveillance against her, likely conducted by a client of the NSO group. 
+        </p>
+        <p>
+            Pegasus infects devices using various vectors stemming from vulnerabilities within current mobile operating systems. It can be transmitted within a package deployed using the calling feature inside WhatsApp, even if the call is not answered. The software also exploits OS-level vulnerabilities, such as kernel mapping and WebKit found in Safari.
+        </p>
+        <p>
+            Pegasus can harvest data from devices, including contacts, pictures/videos, and text messages. It can remotely enable the camera and microphone. Android also has its own version of the software, called “Chrysoar,” which attempts to gain root access to the Linux kernel.
+        </p>
+        <p>
+            Detecting Pegasus is challenging, as it conceals itself deep within the system. It communicates with a command and control server using certificate pinning, encrypting information between the server and the infected device. If the device fails to communicate with the server for more than 60 days, it self-destructs.
+        </p>
+        <p>
+            On November 23, 2021, Apple announced a contribution of $10 million to support cybersurveillance researchers and advocates, along with a lawsuit against NSO group and its parent company. Apple plans to ban NSO group from using any Apple software, services, or devices. Since the discovery of Pegasus by researchers at Citizen Lab, Apple has implemented mechanisms to mitigate spyware attacks from NSO, such as “lockdown mode.” 
+        </p>
+        <p>
+            NSO group and their surveillance products have highlighted that software misuse is not just contained within the dark corners of the web but also present in multi-billion-dollar organizations and government agencies. Their operations underscore the potential for extreme surveillance measures, raising concerns about privacy rights. Users are forced to trust anonymous board members to make the right decisions in qualifying clients for software licenses that could potentially impact privacy rights forever. 
+        </p>
+    </main>
+    
+</body>
+</html>

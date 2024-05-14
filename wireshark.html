@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireshark</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <img src="https://i.postimg.cc/W3RDFYLz/Tech-Toniclogo.png" alt="techtoniclogo">
+    <nav>
+        <ul>
+            <div class="navlist">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="articles.html">Articles</a></li>
+            <li><a href="aboutme.html">About Me</a></li>
+            <li><a href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile">Linkedin</a></li>
+            <li><a href="contact_me.html">Contact Me</a></li>
+            </div>
+        </ul>
+    </nav>
+    <main>
+    <h1 class="wiresharkheader">Exploring Wireshark</h1>
+        <p>
+            Wireshark is an extremely popular tool in the world of IT, especially within networking and cybersecurity. Simply put, Wireshark is a network protocol analyzer that highlights its features, such as deep inspection for live capture and offline analysis, multi-platform compatibility, and support for various packet file formats like Tcpdump, PCAP, and Cisco Secure IDS iplog. Originally developed in 1998 by Gerald Combs, Wireshark has since been supported by many network experts, with a long list of contributors available on the Wireshark website.  
+        </p>
+        <p>
+            Wireshark is an immensely powerful tool and can certainly be used for extensive reconnaissance practices within hacking, as we will see shortly. Fortunately, most of its utilization is only available within a certain subnet it is scanning, and the host system is authorized to be on. This highlights the importance of very secure NAC (Network Access Controls) practices. Now, let's get into using Wireshark on my home network! 
+        </p>
+        <p>
+            There are many different functionalities found in Wireshark. So much so that Wireshark offers courses on how to use its product in the most efficient way, but the real bread and butter comes from the line-by-line packet analysis. Here, Wireshark captures segments of traffic it finds within a certain interval of time. We can see all the different protocols and broadcasts going over at any given moment. Within this line-by-line terminal, Wireshark will highlight certain packet captures of particular interest, such as ARP requests and session initialization, as we will see shortly.  
+        </p>
+        <p>
+            First and foremost, let's discuss ARP requests. 
+        </p>
+        <p>
+            ARP is essentially a table of MAC addresses your computer keeps of all the devices within your subnet. If your computer is going to use lower levels of the OSI model for communication, it will generally use MAC addresses instead of IP addresses. This makes for a more seamless communication method. Instead of always having to go through routers (which forward traffic based on IP), communication can go through switches (which forward traffic based on MAC addresses) or hubs if you are feeling old school. One device will send out a broadcast asking “Who is this IP?”, and that device with that IP address will respond “I am, here is my MAC address”. The original device will then store that MAC address under what is known as the ARP table, which can be easily found within Windows using the command <code>"arp -a"</code>.  
+        </p>
+        <p>
+            Now, within my packet capture using Wireshark, I have found an ARP request noted here.
+        </p>
+        <img class="wiresharkimg1" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhguEGw9ANSPtXtrDOVMD82TGMM44U47ZMd_h4U0uV7cphU6HE2hyphenhyphenwik6_vN8p9-IKG-aZM_pF-AILaHu9s2VcFcud300AajqmSUE_gPLelAGRnEuD8J7ga1rPrguakJPOq-K6Yl2e6SqHw-wv5gaKs4L8T9SP0oCMQH4TVDrj2eu5UlPyKFp03GuTjKV7s/w434-h38/Pic1.jpg" alt="arp requests">
+        <p>
+            This may not make a whole lot of sense, so to get a better idea of what is going on, I decided to run the ipconfig command within CMD in Windows to discover my own IP address and the address of my default gateway (in this case, an Xfinity one). Here are the results: 
+        </p>
+        <img class="wiresharkimg2" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgX69NkEff8kWM5n3Q6JVHB-8iGkrrsv-8u0VPNeDBJIx2nP_6D-BmMIy8uKk-LqEGXHewea4mpPmU3aBaSK6gJQa1vkBpXo9pexlbipXS1UDeQ1tyKNAZlh4Kt6hJOLehCr8o-ooS5X_JIKcLOe52Cz_aWSyQdcXZhhtl06J6eNMoU56JCLpvMTzDwOVuo/w385-h101/Pic2.jpg" alt="ipconfig results">
+        <p>
+            To make things a little simpler, I will generally only be referring to IPv4 addresses. Here we see my IP address as 10.0.0.227 and my default gateway address as 10.0.0.1. From the packet capture above, we see my computer made an ARP request to my default gateway, asking for its MAC address. The gateway said “tell 10.0.0.227 that I am 10.0.0.1 and here is my MAC address”. There my computer stores that MAC address in its ARP table. ARP is very interesting and is the sole attack vector for a common hacking tactic, ARP poisoning. In ARP poisoning, a mischievous device will wrongfully identify itself as the IP address the inquiring device is looking for. That device will then store the incorrect MAC address for that IP. Since MAC to MAC communication or data link layer (in terms of OSI) is a lower communication method, it is generally not encrypted by nature. This poses a very big security concern. Luckily, this type of attack is extremely well known, and we have had quite some time to implement protocols to mitigate ARP poisoning, such as ARP spoofing detection tools, secure network configurations, or forcing encrypted traffic.  
+        </p>
+        <p>
+            Continuing on with our packet analysis, I found this!  
+        </p>
+        <img class="wiresharkimg3" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgSX2cGfT4wjpsgKQpFVsPGY1WL3otc0VewsnFP1fZQlo5Sik6WTLBJy70FjuDpJqYA1T_xj02Oj5ky-hw9qVaZfJj2_0_kFbtbl0YYUkw3Hi0osNwlRs1Io9syvB3PTficJgB5I4zEu-grC0MZATf80xRqE5mszGieX2cy_zBufaHlqBsKpdAHhnNesiH2/w642-h41/Pic3.jpg" alt="wireshark arp request">
+        <p>
+            I see two IP addresses are connecting to Spotify, a popular music streaming platform! Let's find out more about one of them. 
+        </p>
+        <p>
+            For this practice, I used the IP 10.0.0.5. From my previous ipconfig command, I can tell this is not my device, but from the IP address, I can tell it is on my local area network. I wonder if my device has ever made any ARP request to 10.0.0.5? I will again run the command arp -a to find out! We have the MAC address of 10.0.0.5. 
+        </p>
+        <img class="wiresharkimg4" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8GY70ALOMKXkaau4Dtxg0rqzvDw7QDLcJPpJdKb7jIxkGsRgTzjguY0LFbw0HNwazHaFko1eiGLhddr-nPfmfwGrXTJNgDj8evEWG7dq1NYVRaYLjqQtoXwpy51_6gYtNqqpB9tqcz1oQ1589SnBr1G-mGrH2jGu_LX2ly8zMOE0FZ0Zc4BKAvv8-Og9b/w641-h32/Pic4.jpg" alt="second arp command">
+        <p>
+            Of course, curiosity got the best of me, and I want to know more about the device that has an active session with Spotify. Unfortunately, there really isn’t much more information the CMD line can give us about said MAC address, like the owner or the manufacturer, but there are many websites that can! MAC addresses are often licensed by a specific manufacturer. The manufacturer can be easily identified using the first three columns of the MAC address. This is what I found using the MAC address of IP 10.0.0.5 using one of these MAC address inquiry tools.  
+        </p>
+        <img class="wiresharkimg5" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi6sCAMRmZ25hk6Pnjp8JY4yRVwbQfJ34VWH49Uj-GP9g5Vbdcq_NN2fcuydpOWfavbRoOo9CPn46Jf993DoYqhPG0FFiyGMFn8ihduPlxkIhuDMXON15GjH0y_CAsVvwhYVkFShWT78O1Q6nrOGATQkrjoScWwV7R_Fw8y2SvdHhHNE9Icoujs4OWgJwT-/s320/Pic5.jpg" alt="Mac address results">
+        <p>
+            I don’t remember anyone on my local area network purchasing a device from Hui Zhou Goashengda Technology CO. Let's do more research about this manufacturer! I found this on the home screen of their website.  
+        </p>
+        <img class="wiresharkimg6" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8R8DCX0OtjaTOBClY0mGXz0iW6Na58sfZoW6B3_LeYYuq4AosEGpUAgorOH6j1vGQeDvvvDhBEaurmiYmj7w_64t11-WDPMN0ndmZY6maDTI6QRvZ2H6s4F6j2NRlI10B8ZRs8wGL5dEmsl_GG4VVaep6dr8svt1kynPDMXeYmDoxQ6jEE3P0qKUmkbyN/w408-h88/Pic6.jpg" alt="description of Gaoshengda Technology">
+        <p>
+            As we see, Hui Zhou Goashengda manufactures network interface cards (NICs), the device inside every internet-based device that gives it access to internet communication. It seems they provide these for all sorts of devices, such as smart TVs, gaming consoles, and smartphones. Within technology manufacturing, many different companies are involved in the finished product even though you only see one logo on the box. If Microsoft had to build every little component that goes into making an Xbox from scratch, development time would be an eternity. Instead, they will outsource different companies to make different components. Whoever manufactured this device, outsourced their NICs to be provided by Huizhou. 
+        </p>
+        <p>
+            Let's put on our red hats. I don’t know the exact device that is being used, but I do know the NIC manufacturer. If I found a vulnerability for this NIC, I can still do some damage even if I didn’t know what device I am attacking! This shows just how powerful Wireshark is! I used the packet capture, some basic commands, and web searching to find out all sorts of things about this device. And I especially know the owner likes to frequent Spotify.  
+        </p>
+        <p>
+            Why don’t we move on to an even more interesting packet!  
+        </p>
+        <img class="wiresharkimg7" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgbGU_6zcjMcTjVqX61oh_qenVhtvCKnbRBcZDlDNHOKzIWF7CqYmNHGqqZTnNzO-KNBMf1SRBgxBBFz1I0Sy2JQ0mLYFTKluyVPcKGXul1xgnYdXb48-09S3AhlZ2GkKfr4auqxMRBU7HlBH1QVxICV45fbEcvZuqS6riPNvqcbltueeByUauOpYmBSWS0/w640-h25/Pic7.jpg" alt="another wireshark packet">
+        <p>
+            This one looks odd. It is highlighted in a different color. I also have no idea who IP address 142.250.72.3 is. It does not follow my LAN's IP schema, so it is certainly an external device. It has sent a packet to my computer 10.0.0.27. Let's find out more about this external IP address. To do so, I used the nslookup command to see if this IP is associated with a website.  
+        </p>
+        <img class="wiresharkimg8" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj-F1r1v-K2zUDFiA00ARPV3J-ZXB5BdlXUO0OTjd3Wc1pUpgxORfNwFXsuusbyw1QNB38z3C7KKybXIEBhKBjiy6_kvQf_w7lsIG-6I8zPL0W1W7CZbYCGb44CsiWwNzANRkfiStuXfZ-1iwzus9Y_77H6jvbQ7bH8WDLKk97oXcXaRQg9rQhsnaMfXvXQ/s320/Pic8.jpg" alt="DNS lookup">
+        <p>
+            Well, it doesn’t seem to be a full-on web application, but it certainly is a server of some sort. Luckily, we have some very powerful search engines that might be able to shed some light on this mysterious IP address. It turns out .le100.net is owned by Google, and this server is possibly located in Longmont, Colorado, but definitely somewhere in the US. Google seems to have a lot of these servers lying around with IPv4 addresses ranging from 142.250.72.0 to 142.250.72.255.   
+        </p>
+        <p>
+            Why is 142.250.72.0 sending me a packet?  
+        </p>
+        <p>
+            Looking at the contents of the packet, we see SYN-ACK. We see that my system is trying to establish a session with this Google server. This is crucial for the web browser “Google Chrome” to function properly.   
+        </p>
+        <p>
+            All in all, Wireshark is an amazing tool to use. It shows how the wired/wireless traffic in your LAN is working, but Wireshark and other packet sniffers can also be used to cause harm. Using adequate encryption methods is imperative. When the need to connect to public Wi-Fi networks is needed, a VPN is a must as you cannot rely on Wi-Fi protocols such as WPA2 or 3 to encrypt your information.  
+        </p>
+    </main>
+    <footer>
+        <p>This is the footer. Copyright lol not really</p>
+    </footer>
+    
+</body>
+</html>

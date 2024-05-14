@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metamorphic</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <img src="https://i.postimg.cc/W3RDFYLz/Tech-Toniclogo.png" alt="techtoniclogo">
+    <nav>
+        <ul>
+            <div class="navlist">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="articles.html">Articles</a></li>
+            <li><a href="aboutme.html">About Me</a></li>
+            <li><a href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile">Linkedin</a></li>
+            <li><a href="contact_me.html">Contact Me</a></li>
+            </div>
+        </ul>
+    </nav>
+    <main>
+        <h1 class="MPheader">Metamorphic/polymorphic Malware</h1>
+            <p>
+                I have a profound appreciation for life science. The intricate workings of cells often draw parallels in my mind to the functionality of motherboards. The buses within cells, akin to the cytoplasm, facilitate the transfer of organic materials through chains of proteins, much like the buses on a motherboard transferring bits of information. The resemblance between biological and computer systems extends further. Polymorphic/metamorphic malware operates in a manner reminiscent of biological viruses. Similar to viruses undergoing mutations for DNA scrambling or adopting new features, metamorphic malware alters its code structure. Interestingly, both typically require a host to perform these functions — viruses for creating new strains and metamorphic malware for concealing itself amid anti-malware scans. 
+            </p>
+            <p>
+                Anti-virus/anti-malware companies diligently identify new malware types, creating signatures based on code patterns stored in databases. When the antivirus (AV) encounters recognized malware, it evaluates and flags its signature before execution. Polymorphic and metamorphic malware, however, evade this process by altering code segments, rendering signature-based detection ineffective. This shift has elevated polymorphic/metamorphic malware as the new standard, with 90% of modern malware employing this technique. This transformation has significantly impacted malware detection, causing concerns for users and businesses relying on internet-based systems. Malware attacks result in an average of 16 days of downtime, leading to denial of service (DoS), data breaches, and financial losses. In the span of four years (2019-2023), ransomware, a type of malware encrypting user data and demanding a ransom, has seen a 100% increase in the decryption key's asking price. These challenges underscore the ongoing battle between hackers and cybersecurity professionals. 
+            </p>
+            <p>
+                While polymorphic/metamorphic malware has existed for years, originating in 32-bit Windows operating systems, the techniques have become exponentially complex. Early on, malware used encryption to mask its code, a tactic thwarted by antivirus software focusing on decryptors. The advent of Oligomorphic malware, using polymorphic engines, marked a significant evolution. However, the engines had limitations, prompting antivirus solutions to adapt and block executions. 
+            </p>
+            <img class="MPimg1" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh42SyY_oODmogVKI9Nb1m31fyGlBg2PFBKw9x6lgfQMJ2WkG7rSx838yKWrHv4mooDmnVTupw9A8sb2TsHp0SkWnDLnISKD3Wmq3UVrEY6hWPcA9amiM3bKV8l44Px2dYty4sCt2cWG3v4l4Zcgup1y_101YQ0zlzUL5a0rjE9JoA4e0x2oIwm4n0sj6i5/s320/pexels-cdc-3992945.jpg" alt="main polymorphic photo">
+            <p>
+                The limitations of polymorphic engines became a significant hurdle for malware developers. Win32/Apparition broke away from reliance on these engines, a development highlighted by Microsoft security intelligence in late 2006. Subsequent techniques diverged, giving rise to malware families categorized as either polymorphic or metamorphic.
+            </p>
+            <p>
+                Polymorphic malware, less intricate than its metamorphic counterpart, is often successfully detected by antivirus software. Most of its code remains unchanged during the mutative process, as it alters only a specific portion using an encryption key. While manageable for antivirus software, metamorphic malware takes this process several steps further.
+            </p>
+            <img class="MPimg2" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgnnN4bwDuEq6TusFu7EX1NtxMAG4vTk-FczUiK1anBwhnFBA9gi6tEbZadPp_cvwqKyPRKVNDgaxLZzTWl4lbT-iCLnEKd946UFUEREKeO1rjRM9E2dzWuzj1rv86iagLj_WwoXT2C2df4RipjHhUNgbPDwtBaaFvdvfRHMA9yuYGq1J9sYwwOuwyhrAzo/s320/pexels-bert-5985264.jpg" alt="old computer">
+            <p>
+                Metamorphic malware transforms its entire code body through various processes. Obfuscation, the act of changing/masking code to be unreadable by humans while maintaining program behavior, is a common method. Developers mitigating reverse engineering use obfuscation, a technique frequently employed by metamorphic malware. Dead code insertion, adding non-functional code blocks, is another common strategy. This deliberately adds complexity, making it challenging to comprehend the source code. The combination of obfuscation and dead code insertion renders reverse engineering nearly impossible. 
+            </p>
+            <p>
+                Where do we go from here? Metamorphic malware has rendered standard signature-based detection methods ineffective. To address this, modern AV employs new methods, such as geometric detection, analyzing patterns within encrypted code. Another approach involves behavior detection, where malware's malicious activities are observed using sandboxing. However, some malware types can detect when they are within a sandbox or on a network-isolated system, preventing their spread. Cybersecurity professionals and malware developers engage in a perpetual battle. Developing innovative methods to identify these complex programs may provide security professionals with an advantage in today's cyber world. 
+            </p>
+    </main>
+    <footer>
+        <p>This is the footer. Copyright lol not really</p>
+    </footer>
+
+    
+</body>
+</html>
